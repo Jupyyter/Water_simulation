@@ -26,8 +26,6 @@ public:
 private:
     void renderParticles(sf::RenderWindow& window, const FluidSystem& fluidSystem);
     void renderGrid(sf::RenderWindow& window, const FluidSystem& fluidSystem);
-    void renderObstacle(sf::RenderWindow& window, const FluidSystem& fluidSystem);
-    void renderTerrain(sf::RenderWindow& window, const FluidSystem& fluidSystem);
 
     sf::Color vec3ToColor(const glm::vec3& color, float alpha = 1.0f) const;
     sf::Color densityToColor(float density, float maxDensity = 2.0f) const;
