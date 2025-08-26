@@ -10,8 +10,6 @@ Camera::Camera(const Config& config)
     m_view.setSize({config.simWidth, -config.simHeight});
     m_view.setCenter({config.simWidth / 2.0f, config.simHeight / 2.0f});
 
-    // **MODIFIED**: Render particles at 80% of their physical size
-    // This creates a much more obvious visual gap.
     float visualRadius = config.particleRadius * 0.8f;
     m_particleShape.setRadius(visualRadius);
     m_particleShape.setOrigin({visualRadius, visualRadius});
@@ -33,7 +31,6 @@ Camera::Camera(const Config& config)
     std::cout << "Camera initialized" << std::endl;
 }
 
-// ... the rest of Camera.cpp is unchanged ...
 void Camera::applyTo(sf::RenderWindow& window) const {
     window.setView(m_view);
 }
@@ -67,9 +64,7 @@ void Camera::render(sf::RenderWindow& window, const FluidSystem& fluidSystem, co
 
 void Camera::renderParticles(sf::RenderWindow& window, const FluidSystem& fluidSystem) {
     const auto& particles = fluidSystem.getParticles();
-    
-    // The origin was set in the constructor, so we just need to set the position here
-    // based on the particle's center.
+
     for (const auto& particle : particles) {
         if (!particle.active) continue;
         

@@ -21,7 +21,6 @@ private:
     void render();
     void updateDebugUI();
     
-    // Fixed timestep physics update
     void physicsUpdate(float fixedDeltaTime);
     
 private:
