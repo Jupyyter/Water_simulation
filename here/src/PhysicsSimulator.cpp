@@ -83,8 +83,6 @@ void PhysicsSimulator::handleEvents() {
 
 void PhysicsSimulator::update(float deltaTime) {
     if (m_isPaused) return;
-    
-    // Fixed timestep physics
     m_physicsAccumulator += deltaTime;
     
     while (m_physicsAccumulator >= m_config.physicsTimeStep) {

@@ -25,7 +25,7 @@ private:
     bool m_isRightMousePressed = false; // For deletion
     bool m_isPanning = false;
     sf::Vector2i m_panStartPos{};
-    glm::vec2 m_lastStonePos{-1.0f, -1.0f}; // Renamed from m_lastTerrainPos
+    glm::vec2 m_lastStonePos{-1.0f, -1.0f};
     
     // The current tool selected by the user
     MaterialType m_currentTool = MaterialType::WATER;

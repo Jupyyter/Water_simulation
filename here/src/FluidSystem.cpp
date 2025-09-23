@@ -51,7 +51,7 @@ FluidSystem::FluidSystem(const Config& config)
 }
 
 FluidSystem::~FluidSystem() {
-    // No Box2D cleanup needed anymore
+    // No Box2D cleanup needed
 }
 
 void FluidSystem::initializeMaterialProperties() {
@@ -62,7 +62,7 @@ void FluidSystem::initializeMaterialProperties() {
     m_materialProperties[(int)MaterialType::FIRE]    = {0.05f,{1.0f, 0.3f, 0.0f}};
     m_materialProperties[(int)MaterialType::SAND]    = {4.0f, {0.8f, 0.7f, 0.3f}};
     m_materialProperties[(int)MaterialType::OIL]     = {0.8f, {0.2f, 0.1f, 0.0f}};
-    m_materialProperties[(int)MaterialType::STONE]   = {10.0f,{0.4f, 0.4f, 0.4f}}; // Heavy, gray stone
+    m_materialProperties[(int)MaterialType::STONE]   = {10.0f,{0.4f, 0.4f, 0.4f}};
     m_materialProperties[(int)MaterialType::TERRAIN] = {10.0f,{0.4f, 0.4f, 0.4f}}; // Same as stone
 }
 
@@ -98,7 +98,7 @@ void FluidSystem::update(float deltaTime) {
     // Always update stone hash and solid cells to ensure proper collision detection
     buildStoneHash();
     updateSolidCellsFromStones();
-    m_stoneHashNeedsUpdate = false; // Reset the flag
+    m_stoneHashNeedsUpdate = false;
 
     transferVelocitiesToGrid();
     m_prevVelocityU = m_velocityU;
@@ -109,7 +109,7 @@ void FluidSystem::update(float deltaTime) {
     transferVelocitiesFromGrid();
 
     handleBoundaryCollisions();
-    handleStoneCollisions(); // Handle collisions with stone particles
+    handleStoneCollisions();
     if (m_config.separateParticles) {
         separateParticles(9);
     }
@@ -167,7 +167,7 @@ void FluidSystem::separateParticles(int iterations) {
                             glm::vec2 normal = diff / dist;
                             float displacement_magnitude = 0.5f * (minDist - dist);
                             
-                            // FIXED: Treat stone particles as completely immovable
+                            // Treat stone particles as completely immovable
                             if (p2.material == MaterialType::STONE || p2.material == MaterialType::TERRAIN) {
                                 // Stone is immovable - move p1 completely away
                                 p1.position += normal * displacement_magnitude * 2.0f;
@@ -198,7 +198,6 @@ void FluidSystem::separateParticles(int iterations) {
             }
         }
         
-        // Additional step: Handle collisions between active particles and stone particles
         // using the optimized stone hash for better performance
         for (int activeIdx : m_activeParticles) {
             Particle& activeParticle = m_particles[activeIdx];
@@ -511,7 +510,7 @@ void FluidSystem::removeTerrainInArea(const glm::vec2& position, float radius) {
     removeParticlesInArea(position, radius);
 }
 
-// Rest of the functions remain mostly the same...
+// Rest of the functions remain mostly the same
 
 void FluidSystem::cleanupInactiveParticles() {
     m_particles.erase(

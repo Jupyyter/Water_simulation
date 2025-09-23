@@ -12,7 +12,7 @@ enum class MaterialType {
     FIRE,
     SAND,
     OIL,
-    STONE,  // Changed from TERRAIN to STONE
+    STONE,
     TERRAIN // Keep for backwards compatibility, but will be treated as STONE
 };
 
@@ -70,8 +70,8 @@ private:
     void updateParticleColors();
     void buildSpatialHash();
     void buildStoneHash(); // Separate hash just for stone particles
-    void handleStoneCollisions(); // Renamed from handleTerrainCollisions
-    void updateSolidCellsFromStones(); // Renamed and modified
+    void handleStoneCollisions();
+    void updateSolidCellsFromStones();
 
     inline int getGridIndex(int x, int y) const { return x * m_gridHeight + y; }
     glm::vec2 getGridPosition(int x, int y) const;

@@ -31,9 +31,9 @@ struct Config {
     
     float particleRadius = 0.03f;
     float fluidDensity = 1000.0f;
-    float flipRatio = 0.8f; // Reduced from 0.9f for better stability
-    int pressureIterations = 60; // Reduced from 80 for better performance
-    int particleSeparationIterations = 3; // Reduced from 4 for better performance
+    float flipRatio = 0.8f;
+    int pressureIterations = 60;
+    int particleSeparationIterations = 3;
     
     bool showDebugUI = true;
     bool showParticles = true;

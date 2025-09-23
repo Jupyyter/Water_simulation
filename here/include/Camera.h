@@ -32,23 +32,19 @@ private:
 
 private:
     const Config& m_config;
-    sf::View m_view; // SFML View for camera
+    sf::View m_view;
     
-    // Particle rendering
     sf::CircleShape m_particleShape;
     
-    // Grid rendering
     std::vector<sf::Vertex> m_gridVertices;
     sf::RectangleShape m_cellShape;
     
-    // Obstacle rendering
     sf::CircleShape m_obstacleShape;
 
-    // Terrain rendering
     sf::CircleShape m_terrainShape;
     
     // Debug rendering
     sf::Font m_font;
-    sf::Text m_text{m_font}; // Initialize with font reference
+    sf::Text m_text{m_font};
     bool m_fontLoaded = false;
 };
