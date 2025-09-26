@@ -5,7 +5,6 @@
 #include <glm/glm.hpp>
 #include "Config.h"
 
-// Forward declarations
 class FluidSystem;
 struct Particle;
 

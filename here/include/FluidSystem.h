@@ -31,7 +31,7 @@ struct Particle {
     MaterialType material = MaterialType::WATER;
     float life = 1.0f;
     bool active = true;
-    bool isStatic = false; // New field to mark stone particles as stationary
+    bool isStatic = false;
 };
 
 enum class CellType { FLUID = 0, AIR, SOLID };
@@ -47,7 +47,6 @@ public:
     void addParticles(const glm::vec2& position, float radius, int count, MaterialType material = MaterialType::WATER);
     void removeParticlesInArea(const glm::vec2& position, float radius);
     
-    // Keep these for backwards compatibility but they'll create stone particles
     void addStaticTerrain(const glm::vec2& position, float radius);
     void removeTerrainInArea(const glm::vec2& position, float radius);
     
@@ -98,7 +97,7 @@ private:
     
     std::vector<Particle> m_particles;
     std::vector<int> m_activeParticles;
-    std::vector<int> m_stoneParticles; // New vector to track stone particles separately
+    std::vector<int> m_stoneParticles;
     
     // Stone grid system for non-overlapping placement
     struct StoneGridCell {

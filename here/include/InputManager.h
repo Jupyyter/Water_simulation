@@ -4,7 +4,6 @@
 #include "Config.h"
 #include "FluidSystem.h"
 
-// Forward declarations
 class Camera;
 
 class InputManager {
